@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirecting to Spotify...</title>
+    <script type="text/javascript">
+        let countdown = 4;
+
+        function redirectToSpotify() {
+            // Coba buka Spotify jika aplikasi terpasang
+            window.location.href = "spotify://track/04S1pkp1VaIqjg8zZqknR5";
+
+            // Hitungan mundur selama 4 detik
+            const countdownInterval = setInterval(function() {
+                document.getElementById("countdown").innerText = countdown;
+                countdown--;
+
+                // Setelah 4 detik, alihkan ke versi web jika aplikasi tidak terbuka
+                if (countdown < 0) {
+                    clearInterval(countdownInterval);
+                    window.location.href = "https://open.spotify.com/track/04S1pkp1VaIqjg8zZqknR5?si=Z5MnbN62RG2lzVNtgVJMFQ";
+                }
+            }, 1000);
+        }
+    </script>
+</head>
+<body onload="redirectToSpotify()">
+    <p>Redirecting to Spotify in <span id="countdown">4</span> seconds...</p>
+</body>
+</html>
